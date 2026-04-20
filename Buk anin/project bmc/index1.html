@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kuliner Nusantara - Padukaku Alan</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #fdfdfd;
+  color: #333;
+  scroll-behavior: smooth;
+}
+
+/* HERO SECTION */
+.hero {
+  height: 65vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+              url('https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1350&q=80');
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+
+.hero h2 {
+  font-size: 3.5rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  animation: fadeInDown 1s ease;
+}
+
+/* MENU NAVIGASI INTERAKTIF */
+.tab-menu {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tab-btn {
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+  padding: 12px 25px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 50px;
+  transition: 0.4s;
+  text-transform: uppercase;
+}
+
+.tab-btn.active, .tab-btn:hover {
+  background: white;
+  color: #8b0000;
+  transform: scale(1.05);
+}
+
+/* KONTEN TAMPILAN */
+.content-section {
+  display: none;
+  padding: 80px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  animation: fadeInUp 0.6s ease;
+}
+
+.content-section.active {
+  display: block;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* DAFTAR MENU */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  text-align: center;
+  transition: 0.3s;
+}
+
+.card:hover { transform: translateY(-10px); }
+
+.card img { width: 100%; height: 180px; object-fit: cover; border-radius: 15px; margin-bottom: 15px; }
+
+/* BMC STYLE */
+.bmc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.box {
+  background: white;
+  padding: 25px;
+  border-top: 5px solid #d60000;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transition: 0.3s;
+}
+
+.box:hover { background: #d60000; color: white; }
+.box h3 { color: #d60000; margin-bottom: 10px; font-size: 1.1rem; }
+.box:hover h3 { color: white; }
+
+/* ABOUT ME - NEW DESIGN */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+}
+
+.info-card {
+  background: white;
+  padding: 40px;
+  border-radius: 25px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+}
+
+.history-text {
+  line-height: 1.8;
+  color: #555;
+  font-size: 1.05rem;
+}
+
+.profile-flex {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+}
+
+.profile-img-container img {
+  width: 180px;
+  height: 180px;
+  border-radius: 25px;
+  object-fit: cover;
+  border: 5px solid white;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.profile-details p { margin-bottom: 8px; font-size: 1rem; }
+.profile-details strong { color: #d60000; display: inline-block; width: 140px; }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.contact-item h4 { color: #d60000; margin-bottom: 10px; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; }
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 40px;
+  background: #1a1a1a;
+  color: #888;
+  margin-top: 50px;
+}
+
+@media(max-width: 768px) {
+  .hero h2 { font-size: 2.2rem; }
+  .profile-flex { flex-direction: column; text-align: center; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .profile-details strong { width: auto; display: block; margin-bottom: 2px; }
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+  <h2>Kuliner Nusantara</h2>
+  
+  <div class="tab-menu">
+    <button class="tab-btn active" onclick="openTab('daftar-menu', this)">Daftar Menu</button>
+    <button class="tab-btn" onclick="openTab('bmc', this)">Business Model</button>
+    <button class="tab-btn" onclick="openTab('about-me', this)">About Me</button>
+  </div>
+</section>
+
+<section id="daftar-menu" class="content-section active">
+  <h2 style="text-align:center; margin-bottom:50px;">Menu Andalan Kami</h2>
+  <div class="card-container">
+    <div class="card">
+      <img src="https://assets.pikiran-rakyat.com/crop/0x0:0x0/720x0/webp/photo/2025/07/27/2572991961.jpg">
+      <h3>Mie Ayam Jamur</h3>
+      <p style="color: #d60000; font-weight: bold; font-size: 1.2rem;">Rp 15.000</p>
+    </div>
+    <div class="card">
+      <img src="https://cdn.franchiseglobal.com/assets/images/posts/2025/06/30/peluang-usaha-mie-pedas-kekinian-modal-ringan-untung-maksimal-bersama-mie-jebew-jebret.jpeg">
+      <h3>Mie Jebew Super</h3>
+      <p style="color: #d60000; font-weight: bold; font-size: 1.2rem;">Rp 18.000</p>
+    </div>
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/28/Bakso_mi_bihun.jpg">
+      <h3>Bakso Granat</h3>
+      <p style="color: #d60000; font-weight: bold; font-size: 1.2rem;">Rp 20.000</p>
+    </div>
+  </div>
+</section>
+
+<section id="bmc" class="content-section">
+  <h2 style="text-align:center; margin-bottom:50px;">Business Model Canvas</h2>
+  <div class="bmc-grid">
+    <div class="box"><h3>Customer Segments</h3><p>Pelajar/Mahasiswa, karyawan kantor, keluarga, dan penikmat kuliner pedas.</p></div>
+    <div class="box"><h3>Value Proposition</h3><p>Bahan baku segar setiap hari, resep rahasia nusantara, dan pelayanan super cepat.</p></div>
+    <div class="box"><h3>Channels</h3><p>Aplikasi Delivery (Grab/Gojek), Media Sosial Instagram & TikTok, Booth Offline.</p></div>
+    <div class="box"><h3>Revenue Streams</h3><p>Penjualan harian unit makanan, paket bundling keluarga, dan kemitraan/franchise.</p></div>
+    <div class="box"><h3>Key Resources</h3><p>Dapur produksi central, tenaga ahli masak, dan sistem manajemen POS digital.</p></div>
+    <div class="box"><h3>Cost Structure</h3><p>Biaya operasional harian, pemasaran digital, gaji staf, dan sewa lokasi strategis.</p></div>
+  </div>
+</section>
+
+<section id="about-me" class="content-section">
+  <div class="about-grid">
+    
+    <div class="info-card">
+      <h2 style="margin-bottom:20px; color:#d60000;">Sejarah Singkat</h2>
+      <p class="history-text">
+        <strong>Kuliner Nusantara</strong> lahir dari impian untuk melestarikan cita rasa tradisional di tengah gempuran makanan cepat saji asing. Dimulai dari kedai kecil di sudut kota, kami berkomitmen menggunakan rempah asli Indonesia tanpa bahan pengawet. Kami percaya bahwa setiap mangkuk mie ayam dan bakso yang kami sajikan membawa cerita tentang kekayaan alam Indonesia. Kini, dengan sentuhan teknologi informasi, kami berupaya memberikan kemudahan akses bagi seluruh penikmat kuliner di tanah air.
+      </p>
+    </div>
+
+    <div class="info-card profile-flex">
+      <div class="profile-img-container">
+        <img src="https://via.placeholder.com/180" alt="Alan Frefansa">
+      </div>
+      <div class="profile-details">
+        <h2 style="color:#d60000; margin-bottom:15px;">Profil Pengembang</h2>
+        <p><strong>Nama</strong>: Alan Frefansa</p>
+        <p><strong>NPM</strong>: 23020006</p>
+        <p><strong>Jurusan</strong>: Sistem Informasi</p>
+        <p><strong>Email</strong>: afrefansa@gmail.com</p>
+        <p><strong>WhatsApp</strong>: 08877021345</p>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <h2 style="margin-bottom:25px; color:#d60000;">Hubungi Perusahaan</h2>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <h4>Alamat Utama</h4>
+          <p>Jl. Nusantara Raya No. 45, Komplek Teknokrat,<br>Bandar Lampung, Lampung 35141</p>
+        </div>
+        <div class="contact-item">
+          <h4>Pusat Bantuan</h4>
+          <p><strong>Contact Person:</strong> +62 821-xxxx-xxxx</p>
+          <p><strong>Email:</strong> support@kulinernusantara.id</p>
+          <p><strong>Operasional:</strong> 09.00 - 21.00 WIB</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 Kuliner Nusantara | Built with ❤️ by Alan Frefansa</p>
+</footer>
+
+<script>
+function openTab(tabId, btn) {
+  const sections = document.querySelectorAll('.content-section');
+  sections.forEach(sec => sec.classList.remove('active'));
+
+  const buttons = document.querySelectorAll('.tab-btn');
+  buttons.forEach(b => b.classList.remove('active'));
+
+  document.getElementById(tabId).classList.add('active');
+  btn.classList.add('active');
+  
+  // Auto scroll ke atas konten saat pindah tab
+  window.scrollTo({top: 400, behavior: 'smooth'});
+}
+</script>
+
+</body>
+</html>
